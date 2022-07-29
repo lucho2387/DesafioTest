@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const dotenv = require('dotenv');
+const path = require ('path')
 
-const conexionDB = async () => {
-    try {
-    
-        const db = await mongoose.connect('mongodb+srv://luis:coderhouse@cluster0.9xnml.mongodb.net/ecommerce?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true });
-        console.log("Se conecto a la BD:", db.connection.name)
-    } catch (error) {
-        console.log(error)
-    }
+dotenv.config({
+    path: path.resolve(process.cwd(),process.env.NODE_ENV + '.env')
+})
+
+module.exports = {
+    NODE_ENV: process.env.NODE_ENV || 'development',
+    HOST: process.env.HOST || 'localhost',
+    PORT: process.env.PORT || '8080',
+    TIPO_PERSISTENCIA: process.env.TIPO_PERSISTENCIA || 'mongo',
 }
-
-module.exports = conexionDB

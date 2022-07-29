@@ -23,7 +23,7 @@ class ControllerProducts {
             let Product = req.body
             let saveProduct = await this.apiProducts.guardarProducto(Product) 
 
-            res.json(saveProduct);
+            res.json({mensaje: "El producto fue guardado correctamente"});
 
         } catch (error) {
             return res.status(500).send({ error: error.message });
@@ -32,11 +32,11 @@ class ControllerProducts {
 
     actualizarProducto = async (req, res) => {
         try {
-            let Product = req.body
+            let product = req.body
             let id = req.params.id 
-            let updateProduct = await this.apiProducts.actualizarProducto(id, Product)
+            let updateProduct = await this.apiProducts.actualizarProducto(id, product)
             
-            res.json(updateProduct);
+            res.json({mensaje: "El producto fue actualizado correctamente"});
 
         } catch (error) {
             return res.status(500).send({ error: error.message });
@@ -48,7 +48,7 @@ class ControllerProducts {
             let id = req.params.id 
             let deleteproduct = await this.apiProducts.eliminarProducto(id)
 
-            res.json(deleteproduct);
+            res.json({mensaje: "El producto fue eliminado correctamente"});
 
         } catch (error) {
             return res.status(500).send({ error: error.message });

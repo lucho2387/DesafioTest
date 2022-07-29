@@ -1,4 +1,4 @@
-const productDTO = require('../../dto/products')
+const productDTO = require('../dto/products')
 const ProductsBaseDAO = require('./products') 
 const ProductoSchema = require('../model/product')
 

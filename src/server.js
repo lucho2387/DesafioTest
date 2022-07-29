@@ -1,14 +1,16 @@
+const config = require('./config/config')
 const express = require('express');
 const helmet = require('helmet');
 const compression = require('compression');
 const logger = require('morgan');
+const ProductsRouter = require('./routes/products');
+// const dotenv = require('dotenv');
+
+// dotenv.config();
+
 const app = express();
-// const config = require('./config/database/connection')
-const dotenv = require('dotenv');
 
-dotenv.config();
 
-require('./config/database/connection');
 
 app.use(logger('dev'));
 app.use(compression());
@@ -24,19 +26,21 @@ app.use((err, req, res, next) => {
 
 
 
-const ProductsRouter = require('./routes/products');
+
 const productRouter = new ProductsRouter()
 
 app.use('/api', productRouter.start());
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = config.PORT || 8080;
 
 const server = app.listen(PORT, () => {
-    console.log(`servidor escuchando en http://localhost:${PORT}`);
-});
+    console.log(
+        `Servidor express escuchando en el puerto ${PORT} (${config.NODE_ENV} - ${config.TIPO_PERSISTENCIA})`
+)})
 
 
 server.on('error', error => {
     console.log('error en el servidor:', error);
 });
+

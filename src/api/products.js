@@ -1,10 +1,10 @@
-const config = require('../config/database/connection')
+const config = require('../config/config')
 const ProductsFactoryDAO = require('../models/Daos/productsFactory')
-const Products = require('../models/model/product')
+// const Products = require('../models/model/product')
 
 class ApiProducts {
     constructor() {
-        this.productsDAO = ProductsFactoryDAO.get(process.env.TIPO_PERSISTENCIA)
+        this.productsDAO = ProductsFactoryDAO.get(config.TIPO_PERSISTENCIA)
     }
 
     async obtenerProductos(id){

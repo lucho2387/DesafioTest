@@ -4,7 +4,9 @@
   "description": "",
   "main": "./src/server.js",
   "scripts": {
-    "start": "node ./src/server.js"
+    "start": "node ./src/server.js",
+    "test": "mocha ./src/test/test.js",
+    "testCliente": "node ./src/test/clientehttp.js"
   },
   "keywords": [],
   "author": "",
